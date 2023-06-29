@@ -6,17 +6,19 @@ import axios from 'axios';
 
 function Login() {
 
-const handleSubmit = (e) =>{
+const handleSubmit = async (e) =>{
     e.preventDefault();
     const form = document.querySelector('form');
     const formdata = new FormData(form);
     console.log(...formdata);
     const values = {
-        username : formdata.get("username"),
+        email : formdata.get("username"),
         password : formdata.get("password"),
     }
 
-    axios.post("")
+   await axios.post("http://localhost:9000/api/login", values).then((data)=>{
+      console.log(data.data);
+    })
 
 }
 
