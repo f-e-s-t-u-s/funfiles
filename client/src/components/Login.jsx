@@ -1,8 +1,25 @@
 import React from "react";
 import "./login.css"
 import books from "../images/books.png"
+import axios from 'axios';
+
 
 function Login() {
+
+const handleSubmit = (e) =>{
+    e.preventDefault();
+    const form = document.querySelector('form');
+    const formdata = new FormData(form);
+    console.log(...formdata);
+    const values = {
+        username : formdata.get("username"),
+        password : formdata.get("password"),
+    }
+
+    axios.post("")
+
+}
+
   return (
     <div className="login-page">
       <div className="header">
@@ -10,11 +27,11 @@ function Login() {
       </div>
 
       <div class="form">
-        <form>
+        <form onSubmit={handleSubmit} >
           <label for="username">username</label>
           <br />
           <hr />
-          <input type="text" id="username" class="username" name="username" />
+          <input type="text" id="username" className="username" name="username" />
           <br />
           <label for="password" id="password" name="password">
             password
@@ -23,9 +40,11 @@ function Login() {
           <input
             type="password"
             id="password"
-            class="password"
+            className="password"
             name="password"
+
           />
+          <button type="submit" >Login</button>
         </form>
         <div class="backgroundimg">
           <img
